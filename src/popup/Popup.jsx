@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const popup = () => {
+const Popup = () => {
   const [summaryType, setSummaryType] = useState("brief");
   const [result, setResult] = useState("Select a type and click Summarize");
   const [isCopied, setIsCopied] = useState(false);
@@ -43,7 +43,7 @@ const popup = () => {
     chrome.storage.sync.get(['geminiAPIKey'], ({geminiAPIKey}) => {
       //if user dont have api key
       if(!geminiAPIKey){
-        setResult("No API key set, Click gear icon to add one");
+        setResult("No API key set");
         return;
       }
 
@@ -81,14 +81,17 @@ const popup = () => {
   }
 
   return (
-    <div className=''>
-        <h2>AI Summary</h2>
+    <div className='p-3 w-[380px] bg-amber-100'>
+        <div className='flex items-center justify-center gap-2 mb-3'>
+          <p className='font-[poppins] text-2xl font-semibold'>AI SUMMARIZER </p>
+          <img src="ai.png" alt="ai image" width={25} height={18} />
+        </div>
         
         {/* Options */}
         <select 
+          className='w-full mx-auto mb-3 text-lg px-2 py-1 border rounded outline-none font-mono'
           value={summaryType}
           onChange={(e) => setSummaryType(e.target.value)}
-          className=''
         >
           <option value="brief">Brief</option>
           <option value="detailed">Detailed</option>
@@ -96,26 +99,29 @@ const popup = () => {
         </select>
 
         {/* buttons and text box */}
-        <div className=''>
+        <div className='flex gap-3 font-[poppins] mb-3'>
           <button 
             onClick={handleSummarize}
-            className=''
+            className='px-2 py-1 border bg-blue-200 rounded outline-none cursor-pointer'
           >
             Summarize
           </button>
  
           <button 
             onClick={handleCopy}
-            className=''
+            className='px-2 py-1 border text-md bg-red-300 rounded outline-none cursor-pointer'
           >
             {isCopied ? "Copied" : "Copy"}
           </button>
 
+        </div>
+        
+        <div className='whitespace-pre-wrap max-h-[300px] overflow-y-auto bg-white p-2 border rounded'>
           <pre className=''>{result}</pre>
         </div>
     </div>
   )
 }
 
-export default popup
+export default Popup
 
