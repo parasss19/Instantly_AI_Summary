@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Options = () => {
   const [key, setKey] = useState("");
-  const [message, setMessage] = useState("");
+
+  const navigate = useNavigate();
 
   //Load saved key on component mount
   useEffect(() => {
@@ -18,10 +21,14 @@ const Options = () => {
     if(!key.trim()) return;   //if key not found
 
     chrome.storage.sync.set({geminiAPIKey: key.trim()} , () => {
-      setMessage("Key Saved Successfully");
-      setTimeout(() => (
-        setMessage('')
-      ),2000);
+      toast.success('Key Saved', {
+        position: "top-center",
+        autoClose: 4000,
+        draggable: true,
+        theme: "dark",
+      })
+    
+      navigate("/");
     })
   }
 
@@ -49,8 +56,6 @@ const Options = () => {
           className="px-2 py-1 border text-md bg-red-300 rounded outline-none cursor-pointer" 
         > Save Key
         </button>
-
-        {message && <p className="text-green-600">{message}</p>}
       </div>
 
       <hr className="h-3 w-[97%] text-gray-600" />
@@ -59,13 +64,7 @@ const Options = () => {
       <div className="flex gap-2 items-center">
           <p className="font-mono text-lg text-red-500 font-bold">Don't have key </p>
           <button className="px-2 py-1 border text-md bg-red-300 rounded outline-none cursor-pointer">
-            <a
-              href="https://makersuite.google.com/app/apikey"
-              className=""
-              target="blank"
-            >
-            Generate Key
-            </a>
+            <a href="https://makersuite.google.com/app/apikey" target="blank">Generate Key </a>
           </button>
       </div>
 
