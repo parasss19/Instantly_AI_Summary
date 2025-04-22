@@ -1,10 +1,14 @@
-import './App.css'
+import { Routes, Route } from 'react-router-dom';
+import Popup from './popup/Popup'
+import Options from './options/Options';
 
 function App() {
-  
   return (
     <>
-      <h1 className='bg-amber-500'>hello world</h1>
+      <Routes>
+        <Route path="/" element={<Popup/>} />
+        <Route path="/options" element={<Options />} />
+      </Routes>
     </>
   )
 }
