@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { RiExternalLinkLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
+import ReactMarkdown from 'react-markdown';
 
 const Popup = () => {
   const [summaryType, setSummaryType] = useState("brief");
@@ -91,7 +92,7 @@ const Popup = () => {
   };
 
   return (
-    <div className="p-3 w-[380px] h-[400px] min-h-[350px] bg-amber-100">
+    <div className="p-3 w-[380px] min-h-[350px] bg-amber-100">
       <div className="flex items-center justify-center gap-2 mb-3">
         <p className="font-[poppins] text-2xl font-semibold">AI SUMMARIZER </p>
         <img src="ai.png" alt="ai image" width={25} height={18} />
@@ -140,9 +141,11 @@ const Popup = () => {
         </button>
       </div>
 
-      <div className="whitespace-pre-wrap font-mono w-full min-h-[100px] max-h-[300px] overflow-y-auto bg-white p-2 border rounded shadow-inner text-black">
-      {result}
-     </div>
+      <div className="whitespace-pre-wrap font-mono w-full min-h-[100px] max-h-[300px] overflow-y-auto bg-white p-2 border rounded shadow-inner text-black mb-3">
+        <ReactMarkdown>{result}</ReactMarkdown> 
+      </div>
+
+     <span className="text-xs text-gray-400 font-[poppins]">If extension not work Reload the page</span>
     </div>
   );
 };
