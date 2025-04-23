@@ -57,10 +57,13 @@ const Popup = () => {
       //if user have api key
       //Step 2 Ask content.js for the page text
       chrome.tabs.query({ active: true, currentWindow: true }, ([tab]) => {
-        chrome.tabs.sendMessage(
-          tab.id,
-          { type: "GET_ARTICLE_TEXT" },
-          async ({text}) => {
+        chrome.tabs.sendMessage(tab.id, { type: "GET_ARTICLE_TEXT" }, async (res) => {
+           if (chrome.runtime.lastError) {
+             setResult("Extension Error: " + chrome.runtime.lastError.message);
+             return;
+           }
+          
+            const text = res?.text;
             if (!text) {
               setResult("Couldn't extract text from this page 😕");
               return;
@@ -137,9 +140,9 @@ const Popup = () => {
         </button>
       </div>
 
-      <div className="whitespace-pre-wrap min-h-[100px] overflow-y-auto bg-white p-2 border rounded">
-        {result}
-      </div>
+      <div className="whitespace-pre-wrap font-mono w-full min-h-[100px] max-h-[300px] overflow-y-auto bg-white p-2 border rounded shadow-inner text-black">
+      {result}
+     </div>
     </div>
   );
 };
