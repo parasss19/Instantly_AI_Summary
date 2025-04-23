@@ -60,7 +60,7 @@ const Popup = () => {
       chrome.tabs.query({ active: true, currentWindow: true }, ([tab]) => {
         chrome.tabs.sendMessage(tab.id, { type: "GET_ARTICLE_TEXT" }, async (res) => {
            if (chrome.runtime.lastError) {
-             setResult("Extension Error: " + chrome.runtime.lastError.message);
+             setResult("Extension Error: Reload the page then it will work");
              return;
            }
           
@@ -145,7 +145,6 @@ const Popup = () => {
         <ReactMarkdown>{result}</ReactMarkdown> 
       </div>
 
-     <span className="text-xs text-gray-400 font-[poppins]">If extension not work Reload the page</span>
     </div>
   );
 };
