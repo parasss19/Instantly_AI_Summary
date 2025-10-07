@@ -28,7 +28,7 @@ const Popup = () => {
     };
     const prompt = typeOfSummary[type] || typeOfSummary.brief;
     const res = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${geminiAPIKey}`, // Fixed model name
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiAPIKey}`, // Fixed model name
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

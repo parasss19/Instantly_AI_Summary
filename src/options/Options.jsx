@@ -17,7 +17,7 @@ const Options = () => {
   //validator func for API key
   const testApiKey = async (testKey) => {
     try {
-      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${testKey}`,
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${testKey}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
