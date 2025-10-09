@@ -106,7 +106,7 @@ const Popup = () => {
     <div className="p-3 w-[380px] min-h-[350px] bg-amber-100">
       <div className="flex items-center justify-center gap-2 mb-3">
         <p className="font-[poppins] text-2xl font-semibold">AI SUMMARIZER</p>
-        <img src="ai.png" alt="AI icon" width={25} height={18} />
+        <img src="/icons/ai.png" alt="AI icon" width={25} height={18} />
       </div>
       <div className="flex items-center justify-center mx-auto">
         <p className="text-lg text-red-700 my-2 font-[poppins]">Too long? Didn’t read? Let AI spill the tea for you 💅</p>
