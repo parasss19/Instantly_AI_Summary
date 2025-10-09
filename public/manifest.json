@@ -4,17 +4,17 @@
   "name": "Instantly",
   "description": "Turn Long Reads Into Key Insights with your personal AI Reading Assistant",
   "author": "Paras Mehta",
-  "version": "1.3",
+  "version": "1.4",
   "permissions": ["activeTab", "storage"],
   "host_permissions": ["<all_urls>"],
   "action": {
-    "default_icon": "icon.png",
+    "default_icon": "icons/icon16.png",
     "default_popup": "index.html"
   },
   "icons": {
-    "16": "icon.png",
-    "48": "icon.png",
-    "128": "icon.png"
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
   },
   "content_scripts": [
     {
